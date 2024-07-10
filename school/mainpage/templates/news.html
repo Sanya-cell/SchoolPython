@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style>
+
+
+.container {
+    width: 80%; /* Ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера */
+    text-align: justify; /* Выравнивание текста по ширине */
+}
+
+.container::after {
+    content: '';
+    display: inline-block;
+    width: 100%; /* Создание пустого блока для "выравнивания" текста */
+}
+#new {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 7px;
+    border-radius: 30px;
+    margin-bottom: 2px;
+    backdrop-filter: blur(3px);
+    }
+#new h1{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    }
+
+</style>
+
+<div id = "new" class="container">
+        <h1>Новости</h1>
+        {% for article in articles %}
+            <div class="article">
+                <h4><a style=" padding: 10px; text-decoration: none;" href="{% url 'article' article.id %}">{{ article.title }}</a></h4>
+                <p style="padding: 10px;">{{ article.get_short_text }}</p>
+            </div>
+                <html>
+
+    <body>
+        {% endfor %}
+</div>
+<style>
+        body {
+  background-image: url('/static/1.jpg');
+  background-repeat: no-repeat; /* фон-повтор */
+  background-attachment: fixed;/* фон-вложение */
+  background-size: cover; /* размер фона: обложка */
+
+}
+
+</style>
+
+{% endblock %}
